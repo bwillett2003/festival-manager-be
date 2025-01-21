@@ -29,9 +29,14 @@ end
     artist: Faker::Music.band,
     location: STAGES.sample,
     date: Date.today,
-    time: Faker::Time.between(
-      from: DateTime.now.change(hour: 12),
-      to: DateTime.now.change(hour: 23)
+    time: Time.new(
+      Date.today.year,
+      Date.today.month,
+      Date.today.day,
+      rand(13..23),
+      [0, 30].sample,
+      0,
+      Time.zone.name
     )
   )
 end
