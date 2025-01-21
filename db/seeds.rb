@@ -7,3 +7,43 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+User.destroy_all
+Show.destroy_all
+Schedule.destroy_all
+ScheduleShow.destroy_all
+
+STAGES = ["Main Stage", "Side Stage", "VIP Stage", "Electronic Stage"]
+
+10.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.unique.email
+  )
+end
+
+20.times do
+  Show.create!(
+    artist: Faker::Music.band,
+    location: STAGES.sample,
+    date: Date.today,
+    time: Faker::Time.between(
+      from: DateTime.now.change(hour: 12),
+      to: DateTime.now.change(hour: 23)
+    )
+  )
+end
+
+User.all.each do |user|
+  schedule = Schedule.create!(
+    title: "#{user.first_name}'s Schedule",
+    date: Date.today,
+    user: user
+  )
+
+  Show.all.sample(5).each do |show|
+    ScheduleShow.create!(schedule: schedule, show: show)
+  end
+end
