@@ -45,7 +45,7 @@ RSpec.describe 'Schedules API', type: :request do
 
       expect(response).to have_http_status(:not_found)
       json = JSON.parse(response.body)
-      expect(json['error']).to eq('Schedule not found')
+      expect(json['error']).to eq('Record not found')
     end
   end
 
@@ -78,7 +78,7 @@ RSpec.describe 'Schedules API', type: :request do
 
       expect(response).to have_http_status(:not_found)
       json = JSON.parse(response.body)
-      expect(json['error']).to eq('Show or schedule not found')
+      expect(json['error']).to eq('Record not found')
     end
 
     it 'returns a 404 status when the schedule does not exist' do
@@ -86,7 +86,15 @@ RSpec.describe 'Schedules API', type: :request do
 
       expect(response).to have_http_status(:not_found)
       json = JSON.parse(response.body)
-      expect(json['error']).to eq('Show or schedule not found')
+      expect(json['error']).to eq('Record not found')
+    end
+
+    it 'returns a 404 status and appropriate error when the schedule and show do not exist' do
+      delete "/api/v1/schedules/9999/shows/9999"
+  
+      expect(response).to have_http_status(:not_found)
+      json = JSON.parse(response.body)
+      expect(json['error']).to eq('Record not found')
     end
   end
 end

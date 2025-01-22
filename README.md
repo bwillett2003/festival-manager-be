@@ -117,7 +117,7 @@ The Festival Manager API is a tool designed to help attendees organize their per
 - Example Response (Error):
 ```
 {
-  "error": "Show or schedule not found"
+  "error": "Record not found"
 }
 ```
 
