@@ -25,7 +25,7 @@ The Festival Manager API is a tool designed to help attendees organize their per
 
 ## Getting Started
 
-1. Clone the repository: [festival-manager-be](https://github.com/bwillett2003/festival-manager-be)
+1. Clone the repository: [Festival Manager Back End Repository](https://github.com/bwillett2003/festival-manager-be)
 2. Install Dependencies:
 ```bundle install```
 3. Set up the database: 
@@ -35,6 +35,8 @@ The Festival Manager API is a tool designed to help attendees organize their per
 4. Start Your rails server: 
 ```rails server```
 (should be localhost:3000)
+
+5. Clone the front end repository as well but refer to its README: [Festival Manager Front End Repository](https://github.com/bwillett2003/festival-manager-fe)
 
 ## Routes
 
